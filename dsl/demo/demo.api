@@ -1,0 +1,19 @@
+syntax = "v1"
+
+type (
+    DemoReq {
+        Name string `json:"name"`
+    }
+    DemoResp {
+        Name string `json:"name"`
+    }
+)
+
+@server(
+    group: demo
+)
+service Api {
+    @doc "demo"
+    @handler doDemo
+    post /do/demo (DemoReq) returns (DemoResp)
+}

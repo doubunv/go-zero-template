@@ -1,0 +1,10 @@
+syntax = "v1"
+
+import (
+	"demo/demo.api"
+)
+
+service Api {
+	@handler swagger
+	get /swagger
+}
