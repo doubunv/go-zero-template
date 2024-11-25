@@ -1,0 +1,109 @@
+syntax = "v1"
+
+type (
+    AdminUserLoginReq {
+        Account string `json:"account"` //账号，系统唯一
+        Password string `json:"password"` //密码
+    }
+    LoginRoleMenuItem {
+        Id int64 `json:"id"` //菜单ID
+        Name string `json:"name"` //菜单名字
+        path string `json:"path"` //菜单路径地址
+        Children []LoginRoleMenuItem `json:"children"` //子级菜单
+    }
+    AdminUserLoginResp {
+        Token string `json:"token"` //登录成功返回的token
+        RoleMenuItemList []LoginRoleMenuItem `json:"roleMenuItemList"` //登录成功后返回的菜单信息
+    }
+    CreateAdminUserReq {
+        Account string `json:"account"` //登录账号
+        Name string `json:"name"` //账号名称
+        Password string `json:"password"` //密码
+        RoleId int64 `json:"roleId"` //系统角色ID
+    }
+    CreateAdminUserResp {
+        Id int64 `json:"id"` //用户ID
+    }
+    DeleteAdminUserReq {
+        Account string `json:"account,optional"` //用户账号
+        UserId int64 `json:"userId,optional"` //用户ID
+    }
+    DeleteAdminUserResp {
+
+    }
+    AdminUserListItem {
+        Account string `json:"account"` //账号，系统唯一
+        Name string `json:"name"` //账号名称
+        Status int `json:"status"` //状态 1=正常 2=异常
+        CreatedAt string `json:"createdAt"` //创建时间
+        RoleId int64 `json:"roleId"`    // 角色ID
+        RoleName string `json:"roleName"` // 角色名称
+    }
+    AdminUserListReq {
+        STime string `json:"sTime,optional"` //开始注册时间
+        ETime string `json:"eTime,optional"` //结束注册时间
+        Status int `json:"status,optional"` //状态 1=正常 2=异常
+        SearchKey string `json:"searchKey"` //模糊搜索关键词
+        Page     int64            `json:"page,optional,default=1"` //当前页
+        PageSize int64            `json:"pageSize,optional,default=20"` //每页展示的条数
+    }
+    AdminUserListResp {
+        AdminUserList []AdminUserListItem `json:"adminUserList"`
+        Page     int64            `json:"page"` //当前页
+        PageSize int64            `json:"pageSize"` //每页展示的条数
+        Total    int64            `json:"total"` //总条数
+    }
+    UpdateAdminUserReq {
+        Id int64 `json:"id"` //需要修改的用户ID
+        Account string `json:"account"` //账号，系统唯一
+        Name string `json:"name"` //账号名称
+        Password string `json:"password,optional"` //密码，如果不改动则不传
+        Status int `json:"status"` //状态 1=正常 2=异常
+        RoleId int64 `json:"roleId"`    // 角色ID
+    }
+    UpdateAdminUserResp {
+
+    }
+    GetOneAdminUserReq {
+        Account string `json:"account,optional"` //用户账号
+        UserId int64 `json:"userId,optional"` //用户ID
+    }
+    GetOneAdminUserResp {
+        Id int64 `json:"id"`
+        Account string `json:"account"` //账号，系统唯一
+        Name string `json:"name"` //账号名称
+        Status int `json:"status"` //状态 1=正常 2=异常
+        CreatedAt string `json:"createdAt"` //创建时间
+        RoleId int64 `json:"roleId"`    // 角色ID
+        RoleName string `json:"roleName"` // 角色名称
+    }
+)
+
+@server(
+    group: adminUser
+)
+service Api {
+    @doc "管理员登录"
+    @handler adminLogin
+    post /adminUser/userLogin (AdminUserLoginReq) returns (AdminUserLoginResp)
+
+    @doc "创建管理员"
+    @handler createUser
+    post /adminUser/createUser (CreateAdminUserReq) returns (CreateAdminUserResp)
+
+    @doc "删除管理员"
+    @handler deleteUser
+    post /adminUser/deleteUser (DeleteAdminUserReq) returns (DeleteAdminUserResp)
+
+    @doc "管理员列表"
+    @handler userList
+    post /adminUser/userList (AdminUserListReq) returns (AdminUserListResp)
+
+    @doc "编辑管理员"
+    @handler updateUser
+    post /adminUser/updateUser (UpdateAdminUserReq) returns (UpdateAdminUserResp)
+
+    @doc "获取管理员详情"
+    @handler getOneUser
+    post /adminUser/getOneUser (GetOneAdminUserReq) returns (GetOneAdminUserResp)
+}

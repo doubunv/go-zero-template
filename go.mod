@@ -3,8 +3,12 @@ module go-api
 go 1.22
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/jinzhu/copier v0.4.0
+	github.com/pkg/errors v0.9.1
 	github.com/redis/go-redis/v9 v9.5.3
 	github.com/sirupsen/logrus v1.9.3
+	github.com/spf13/cast v1.7.0
 	github.com/zeromicro/go-zero v1.6.5
 	go.opentelemetry.io/otel/trace v1.24.0
 	google.golang.org/grpc v1.63.2

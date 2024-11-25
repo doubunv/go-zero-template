@@ -1,7 +1,7 @@
 syntax = "v1"
 
 import (
-	"demo/demo.api"
+	"adminUser.api"
 )
 
 service Api {
