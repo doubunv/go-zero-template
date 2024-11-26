@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"go-api/internal/pkg/app"
+	"go-api/internal/pkg/appMiddleware"
 	"go-api/internal/pkg/logs/xcode"
 
 	"github.com/zeromicro/go-zero/core/conf"
@@ -22,7 +23,7 @@ func main() {
 
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
-	server := rest.MustNewServer(c.RestConf)
+	server := rest.MustNewServer(c.RestConf, rest.WithNotAllowedHandler(appMiddleware.NewCorsMiddleware().Handler()))
 	defer server.Stop()
 
 	app.InitAppServer()

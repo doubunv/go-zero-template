@@ -7,15 +7,17 @@ type AdminUserLoginReq struct {
 }
 
 type LoginRoleMenuItem struct {
-	Id       int64               `json:"id"`       //菜单ID
-	Name     string              `json:"name"`     //菜单名字
-	Path     string              `json:"path"`     //菜单路径地址
-	Children []LoginRoleMenuItem `json:"children"` //子级菜单
+	Id       int64                `json:"id"`       //菜单ID
+	MenuName string               `json:"menuName"` //菜单名字
+	Path     string               `json:"path"`     //菜单路径地址
+	MenuPid  int64                `json:"menuPid"`  //父级ID
+	MenuType int                  `json:"menuType"` // 1=菜单，2=按钮
+	Children []*LoginRoleMenuItem `json:"children"` //子级菜单
 }
 
 type AdminUserLoginResp struct {
-	Token            string              `json:"token"`            //登录成功返回的token
-	RoleMenuItemList []LoginRoleMenuItem `json:"roleMenuItemList"` //登录成功后返回的菜单信息
+	Token            string               `json:"token"`            //登录成功返回的token
+	RoleMenuItemList []*LoginRoleMenuItem `json:"roleMenuItemList"` //登录成功后返回的菜单信息
 }
 
 type CreateAdminUserReq struct {
@@ -56,10 +58,10 @@ type AdminUserListReq struct {
 }
 
 type AdminUserListResp struct {
-	AdminUserList []AdminUserListItem `json:"adminUserList"`
-	Page          int64               `json:"page"`     //当前页
-	PageSize      int64               `json:"pageSize"` //每页展示的条数
-	Total         int64               `json:"total"`    //总条数
+	List     []AdminUserListItem `json:"list"`
+	Page     int64               `json:"page"`     //当前页
+	PageSize int64               `json:"pageSize"` //每页展示的条数
+	Total    int64               `json:"total"`    //总条数
 }
 
 type UpdateAdminUserReq struct {

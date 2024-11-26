@@ -16,4 +16,5 @@ const (
 	TokenUidRole = "token_uid_role"
 	Version      = "version"
 	Source       = "source"
+	ReqPath      = "req_path"
 )

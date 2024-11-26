@@ -54,6 +54,7 @@ func NewServerMiddleware(s *rest.Server, opt ...SMOption) *ServerMiddleware {
 }
 
 func (s *ServerMiddleware) ApiUseMiddleware() {
+	s.Server.Use(appMiddleware.NewCorsMiddleware().Handle)
 	s.useApiHeaderMiddleware()
 	s.mustUserAgentMiddleware()
 }

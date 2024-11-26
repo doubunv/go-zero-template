@@ -1,10 +1,13 @@
 package appMiddleware
 
 import (
+	"context"
 	"errors"
 	"github.com/zeromicro/go-zero/core/logc"
+	"go-api/internal/pkg/consts"
 	"go-api/internal/pkg/headInfo"
 	"go-api/internal/pkg/result"
+	"google.golang.org/grpc/metadata"
 	"net/http"
 	"runtime/debug"
 	"strings"
@@ -44,6 +47,20 @@ func (m *ApiHeaderMiddleware) SetNoVerify(b bool) *ApiHeaderMiddleware {
 	return m
 }
 
+func (m *ApiHeaderMiddleware) headInMetadata(ctx context.Context, h headInfo.Head) context.Context {
+	md := metadata.Pairs(
+		consts.Token, h.AuthorizationJwt,
+		consts.TokenUid, h.TokenUid,
+		consts.ClientIp, h.ClientIp,
+		consts.ReqPath, h.ReqPath,
+		consts.Version, h.Version,
+		consts.Source, h.Source,
+	)
+
+	ctxNew := metadata.NewOutgoingContext(ctx, md)
+	return ctxNew
+}
+
 func (m *ApiHeaderMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
@@ -56,6 +73,7 @@ func (m *ApiHeaderMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 				return
 			}
 		}()
+
 		h := headInfo.GetHead(r)
 		if r.Method != http.MethodGet && !m.NotVerify && m.verifyPath(r.URL.Path) {
 			if err := h.Verify(); err != nil {
@@ -65,6 +83,7 @@ func (m *ApiHeaderMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 		}
 
 		newCtx := headInfo.ContextHeadInLog(r.Context(), h)
+		newCtx = m.headInMetadata(newCtx, *h)
 		newReq := r.WithContext(newCtx)
 
 		next(w, newReq)

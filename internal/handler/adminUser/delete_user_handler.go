@@ -1,6 +1,7 @@
 package adminUser
 
 import (
+	"go-api/internal/pkg/result"
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -13,16 +14,16 @@ func DeleteUserHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.DeleteAdminUserReq
 		if err := httpx.Parse(r, &req); err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
+			result.HttpErrorResult(r.Context(), w, err)
 			return
 		}
 
 		l := adminUser.NewDeleteUserLogic(r.Context(), svcCtx)
 		resp, err := l.DeleteUser(&req)
 		if err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
+			result.HttpErrorResult(r.Context(), w, err)
 		} else {
-			httpx.OkJsonCtx(r.Context(), w, resp)
+			result.HttpSuccessResult(r.Context(), w, resp)
 		}
 	}
 }

@@ -30,6 +30,9 @@ func (model *AdminInfoModel) getDb() *gorm.DB {
 
 func (model *AdminInfoModel) FindOne(id int64) schema.AdminInfo {
 	var res schema.AdminInfo
+	if id <= 0 {
+		return res
+	}
 
 	dbRes := model.getDb().Model(&schema.AdminInfo{}).Where("id = ?", id).First(&res)
 	if err := dbRes.Error; err != nil {
@@ -61,6 +64,9 @@ func (model *AdminInfoModel) InsertSchema(data *schema.AdminInfo) error {
 }
 
 func (model *AdminInfoModel) UpdateByMap(id int64, data *schema.AdminInfo) error {
+	if id <= 0 {
+		return errors.New("id error")
+	}
 	updateData := map[string]interface{}{
 		"account": data.Account,
 		"name":    data.Name,
@@ -85,4 +91,11 @@ func (model *AdminInfoModel) GetList(in *schema.AdminInfo, pageQuery *model.Page
 	rows := make([]*schema.AdminInfo, 0)
 	err = builder.Offset(pageQuery.Offset()).Limit(pageQuery.PageSize).Find(&rows).Error
 	return total, rows, err
+}
+
+func (model *AdminInfoModel) DeleteById(id int64) error {
+	if id <= 0 {
+		return errors.New("id error")
+	}
+	return model.getDb().Model(&schema.AdminInfo{}).Where("id = ?", id).Updates(map[string]interface{}{"deleted_at": time.Now()}).Error
 }

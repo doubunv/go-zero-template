@@ -37,7 +37,7 @@ func NewAdminLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AdminL
 func (l *AdminLoginLogic) AdminLogin(req *types.AdminUserLoginReq) (resp *types.AdminUserLoginResp, err error) {
 	resp = &types.AdminUserLoginResp{
 		Token:            "",
-		RoleMenuItemList: make([]types.LoginRoleMenuItem, 0),
+		RoleMenuItemList: make([]*types.LoginRoleMenuItem, 0),
 	}
 	adminInfo := l.AdminInfoModel.FindByAccount(req.Account)
 	if adminInfo.ID == 0 {
@@ -57,7 +57,7 @@ func (l *AdminLoginLogic) AdminLogin(req *types.AdminUserLoginReq) (resp *types.
 	tokenSign := commonTool.GenerateRandomString(8)
 	token, err := jwtToken.Generate2Token(adminInfo.ID, "", tokenSign, adminInfo.RoleId)
 	if err != nil {
-		logc.Error(l.ctx, "AdminLogin", err)
+		logc.Error(l.ctx, "AdminLogin:", err)
 		return nil, errors.New("token Generate error")
 	}
 
@@ -67,16 +67,15 @@ func (l *AdminLoginLogic) AdminLogin(req *types.AdminUserLoginReq) (resp *types.
 	}
 	err = l.AdminLoginTokenModel.AddLoginToken(loginToken)
 	if err != nil {
-		logc.Error(l.ctx, "AdminLogin", err)
+		logc.Error(l.ctx, "AdminLogin:", err)
 		return nil, errors.New("save login token error")
 	}
 
 	//获取角色对应的菜单tree
-	menu, err := l.AdminRoleModel.GetAdminRoleMenu(adminInfo.RoleId)
+	resp.RoleMenuItemList, err = l.AdminRoleModel.GetAdminRoleMenu(adminInfo.RoleId)
 	if err != nil {
 		return nil, err
 	}
-	println(menu)
 
 	resp.Token = token
 	return

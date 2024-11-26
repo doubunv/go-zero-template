@@ -6,11 +6,11 @@ import (
 
 type PermissionMenu struct {
 	ID             int64  `gorm:"column:id"`
-	PermissionName int64  `gorm:"column:permission_name"`
+	PermissionName string `gorm:"column:permission_name"`
 	MenuIds        string `gorm:"column:menu_ids"`
 	gorm.Model
 }
 
-func (u Menu) PermissionMenu() string {
+func (u PermissionMenu) TableName() string {
 	return "t_permission_menu"
 }

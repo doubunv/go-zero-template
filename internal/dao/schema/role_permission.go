@@ -11,6 +11,6 @@ type RolePermission struct {
 	gorm.Model
 }
 
-func (u Menu) RolePermission() string {
+func (u RolePermission) TableName() string {
 	return "t_role_permission"
 }

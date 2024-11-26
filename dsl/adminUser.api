@@ -7,13 +7,15 @@ type (
     }
     LoginRoleMenuItem {
         Id int64 `json:"id"` //菜单ID
-        Name string `json:"name"` //菜单名字
-        path string `json:"path"` //菜单路径地址
-        Children []LoginRoleMenuItem `json:"children"` //子级菜单
+        MenuName string `json:"menuName"` //菜单名字
+        Path string `json:"path"` //菜单路径地址
+        MenuPid int64 `json:"menuPid"` //父级ID
+        MenuType int `json:"menuType"` // 1=菜单，2=按钮
+        Children []*LoginRoleMenuItem `json:"children"` //子级菜单
     }
     AdminUserLoginResp {
         Token string `json:"token"` //登录成功返回的token
-        RoleMenuItemList []LoginRoleMenuItem `json:"roleMenuItemList"` //登录成功后返回的菜单信息
+        RoleMenuItemList []*LoginRoleMenuItem `json:"roleMenuItemList"` //登录成功后返回的菜单信息
     }
     CreateAdminUserReq {
         Account string `json:"account"` //登录账号
@@ -48,7 +50,7 @@ type (
         PageSize int64            `json:"pageSize,optional,default=20"` //每页展示的条数
     }
     AdminUserListResp {
-        AdminUserList []AdminUserListItem `json:"adminUserList"`
+        List []AdminUserListItem `json:"list"`
         Page     int64            `json:"page"` //当前页
         PageSize int64            `json:"pageSize"` //每页展示的条数
         Total    int64            `json:"total"` //总条数

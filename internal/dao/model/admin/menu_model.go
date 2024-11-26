@@ -68,29 +68,31 @@ func (model *MenuModel) GetList(in *schema.AdminInfo, pageQuery *model.PageQuery
 	return total, rows, err
 }
 
-func (model *MenuModel) buildMenuTree(menus []*schema.Menu) map[int64]*dto.MenuTree {
-	menuMap := make(map[int64]*dto.MenuTree)
-	var tree []*schema.Menu
+func (model *MenuModel) buildMenuTree(menus []*schema.Menu) []*dto.MenuTree {
+	MenuTree := make(map[int64]*dto.MenuTree)
+	MenuTreeTemp := make([]*dto.MenuTree, 0)
+	var tree []*dto.MenuTree
 	if len(menus) == 0 {
-		return menuMap
+		return tree
 	}
 
-	for i := range menus {
+	for _, v := range menus {
 		menuTree := &dto.MenuTree{}
-		copier.Copy(menuTree, menus[i])
-		menuMap[menus[i].ID] = menuTree
+		copier.Copy(menuTree, v)
+		MenuTree[v.ID] = menuTree
+		MenuTreeTemp = append(MenuTreeTemp, menuTree)
 	}
 
-	for _, menu := range menus {
+	for _, menu := range MenuTreeTemp {
 		if menu.MenuPid == 0 {
 			tree = append(tree, menu)
 		} else {
-			if parent, exists := menuMap[menu.MenuPid]; exists {
+			if parent, exists := MenuTree[menu.MenuPid]; exists {
 				parent.Children = append(parent.Children, menu)
 			}
 		}
 	}
-	return menuMap
+	return tree
 }
 
 func (model *MenuModel) GetAllMenuByCache() ([]*schema.Menu, error) {
@@ -99,8 +101,7 @@ func (model *MenuModel) GetAllMenuByCache() ([]*schema.Menu, error) {
 	return rows, err
 }
 
-func (model *MenuModel) GetMenuTreeByCache() (res map[int64]*dto.MenuTree, err error) {
-	res = make(map[int64]*dto.MenuTree, 0)
+func (model *MenuModel) GetMenuTreeByCache() (res []*dto.MenuTree, err error) {
 	cache, err := model.GetAllMenuByCache()
 	if err != nil {
 		logc.Error(model.ctx, "GetMenuTreeByCache", err)
@@ -112,13 +113,11 @@ func (model *MenuModel) GetMenuTreeByCache() (res map[int64]*dto.MenuTree, err e
 	return model.buildMenuTree(cache), nil
 }
 
-func (model *MenuModel) GetMenuTreeByIds(menuIds []int64) (res map[int64]*dto.MenuTree, err error) {
-	rows := make([]*schema.Menu, 0)
-	err = model.getDb().Model(&schema.Menu{}).Where("id in ?", menuIds).Find(rows).Error
+func (model *MenuModel) GetMenuByIds(menuIds []int64) (res []*schema.Menu, err error) {
+	err = model.getDb().Model(&schema.Menu{}).Where("id in ?", menuIds).Find(&res).Error
 	if err != nil {
 		logc.Error(model.ctx, "GetMenuTreeByIdsCache", err)
 		return nil, errors.New("query menu error")
 	}
-
-	return model.buildMenuTree(rows), nil
+	return
 }

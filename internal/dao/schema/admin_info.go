@@ -9,7 +9,7 @@ type AdminInfo struct {
 	Password     string `gorm:"column:password"`
 	PasswordSign string `gorm:"column:password_sign"`
 	RoleId       int64  `gorm:"column:role_id"`
-	Status       int64  `gorm:"column:status"`
+	Status       int    `gorm:"column:status"`
 	gorm.Model
 }
 

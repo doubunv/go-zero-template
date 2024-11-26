@@ -23,6 +23,7 @@ type Head struct {
 	ClientIp         string `json:"client_ip"`         // 客户端IP
 	Trace            string `json:"trace"`             // 链路路由
 	TokenUid         string `json:"token_uid"`         // 用户ID
+	ReqPath          string `json:"req_path"`          // 请求path
 }
 
 func GetHead(r *http.Request) *Head {
@@ -34,6 +35,7 @@ func GetHead(r *http.Request) *Head {
 		ClientIp:         getClientIP(r),
 		TokenUid:         strings.Trim(header.Get("TokenUid"), " "),
 		Trace:            trace.SpanContextFromContext(r.Context()).TraceID().String(),
+		ReqPath:          r.URL.Path,
 	}
 }
 
@@ -48,12 +50,13 @@ func (h *Head) String() string {
 
 func ContextHeadInLog(ctx context.Context, h *Head) context.Context {
 	ctxNew := logx.ContextWithFields(ctx,
-		logx.Field(consts.HeaderToken, h.AuthorizationJwt),
-		logx.Field("Version", h.Version),
-		logx.Field("Source", h.Source),
-		logx.Field("ClientIp", h.ClientIp),
-		logx.Field("Trance", h.Trace),
-		logx.Field("TokenUid", h.TokenUid),
+		logx.Field(consts.Token, h.AuthorizationJwt),
+		logx.Field(consts.Version, h.Version),
+		logx.Field(consts.Source, h.Source),
+		logx.Field(consts.ClientIp, h.ClientIp),
+		logx.Field(consts.Trance, h.Trace),
+		logx.Field(consts.TokenUid, h.TokenUid),
+		logx.Field(consts.ReqPath, h.ReqPath),
 	)
 	return ctxNew
 }

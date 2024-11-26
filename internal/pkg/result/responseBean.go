@@ -15,7 +15,7 @@ func Success(data interface{}, trance string) *ResponseBean {
 	if data == nil {
 		data = struct{}{}
 	}
-	return &ResponseBean{http.StatusOK, "Success ", data, trance}
+	return &ResponseBean{http.StatusOK, "success", data, trance}
 }
 
 func Error(errCode int, errMsg string, trance string) *ResponseBean {

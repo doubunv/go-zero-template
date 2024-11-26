@@ -15,6 +15,168 @@
     "application/json"
   ],
   "paths": {
+    "/adminUser/createUser": {
+      "post": {
+        "summary": "创建管理员",
+        "operationId": "createUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateAdminUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateAdminUserReq"
+            }
+          }
+        ],
+        "tags": [
+          "adminUser"
+        ]
+      }
+    },
+    "/adminUser/deleteUser": {
+      "post": {
+        "summary": "删除管理员",
+        "operationId": "deleteUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAdminUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteAdminUserReq"
+            }
+          }
+        ],
+        "tags": [
+          "adminUser"
+        ]
+      }
+    },
+    "/adminUser/getOneUser": {
+      "post": {
+        "summary": "获取管理员详情",
+        "operationId": "getOneUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetOneAdminUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetOneAdminUserReq"
+            }
+          }
+        ],
+        "tags": [
+          "adminUser"
+        ]
+      }
+    },
+    "/adminUser/updateUser": {
+      "post": {
+        "summary": "编辑管理员",
+        "operationId": "updateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateAdminUserResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateAdminUserReq"
+            }
+          }
+        ],
+        "tags": [
+          "adminUser"
+        ]
+      }
+    },
+    "/adminUser/userList": {
+      "post": {
+        "summary": "管理员列表",
+        "operationId": "userList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminUserListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminUserListReq"
+            }
+          }
+        ],
+        "tags": [
+          "adminUser"
+        ]
+      }
+    },
+    "/adminUser/userLogin": {
+      "post": {
+        "summary": "管理员登录",
+        "operationId": "adminLogin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminUserLoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminUserLoginReq"
+            }
+          }
+        ],
+        "tags": [
+          "adminUser"
+        ]
+      }
+    },
     "/swagger": {
       "get": {
         "operationId": "swagger",
@@ -30,7 +192,368 @@
       }
     }
   },
-  "definitions": {},
+  "definitions": {
+    "AdminUserListItem": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号，系统唯一"
+        },
+        "name": {
+          "type": "string",
+          "description": "账号名称"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=正常 2=异常"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 角色ID"
+        },
+        "roleName": {
+          "type": "string",
+          "description": " 角色名称"
+        }
+      },
+      "title": "AdminUserListItem",
+      "required": [
+        "account",
+        "name",
+        "status",
+        "createdAt",
+        "roleId",
+        "roleName"
+      ]
+    },
+    "AdminUserListReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "string",
+          "description": "开始注册时间"
+        },
+        "eTime": {
+          "type": "string",
+          "description": "结束注册时间"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=正常 2=异常"
+        },
+        "searchKey": {
+          "type": "string",
+          "description": "模糊搜索关键词"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "AdminUserListReq",
+      "required": [
+        "searchKey"
+      ]
+    },
+    "AdminUserListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdminUserListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "AdminUserListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "AdminUserLoginReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号，系统唯一"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        }
+      },
+      "title": "AdminUserLoginReq",
+      "required": [
+        "account",
+        "password"
+      ]
+    },
+    "AdminUserLoginResp": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "登录成功返回的token"
+        },
+        "roleMenuItemList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoginRoleMenuItem"
+          },
+          "description": "登录成功后返回的菜单信息"
+        }
+      },
+      "title": "AdminUserLoginResp",
+      "required": [
+        "token",
+        "roleMenuItemList"
+      ]
+    },
+    "CreateAdminUserReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "登录账号"
+        },
+        "name": {
+          "type": "string",
+          "description": "账号名称"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "系统角色ID"
+        }
+      },
+      "title": "CreateAdminUserReq",
+      "required": [
+        "account",
+        "name",
+        "password",
+        "roleId"
+      ]
+    },
+    "CreateAdminUserResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        }
+      },
+      "title": "CreateAdminUserResp",
+      "required": [
+        "id"
+      ]
+    },
+    "DeleteAdminUserReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "用户账号"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        }
+      },
+      "title": "DeleteAdminUserReq"
+    },
+    "DeleteAdminUserResp": {
+      "type": "object",
+      "title": "DeleteAdminUserResp"
+    },
+    "GetOneAdminUserReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "用户账号"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        }
+      },
+      "title": "GetOneAdminUserReq"
+    },
+    "GetOneAdminUserResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "account": {
+          "type": "string",
+          "description": "账号，系统唯一"
+        },
+        "name": {
+          "type": "string",
+          "description": "账号名称"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=正常 2=异常"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 角色ID"
+        },
+        "roleName": {
+          "type": "string",
+          "description": " 角色名称"
+        }
+      },
+      "title": "GetOneAdminUserResp",
+      "required": [
+        "id",
+        "account",
+        "name",
+        "status",
+        "createdAt",
+        "roleId",
+        "roleName"
+      ]
+    },
+    "LoginRoleMenuItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "菜单ID"
+        },
+        "menuName": {
+          "type": "string",
+          "description": "菜单名字"
+        },
+        "path": {
+          "type": "string",
+          "description": "菜单路径地址"
+        },
+        "menuPid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "父级ID"
+        },
+        "menuType": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 1=菜单，2=按钮"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoginRoleMenuItem"
+          },
+          "description": "子级菜单"
+        }
+      },
+      "title": "LoginRoleMenuItem",
+      "required": [
+        "id",
+        "menuName",
+        "path",
+        "menuPid",
+        "menuType",
+        "children"
+      ]
+    },
+    "UpdateAdminUserReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "需要修改的用户ID"
+        },
+        "account": {
+          "type": "string",
+          "description": "账号，系统唯一"
+        },
+        "name": {
+          "type": "string",
+          "description": "账号名称"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码，如果不改动则不传"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=正常 2=异常"
+        },
+        "roleId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 角色ID"
+        }
+      },
+      "title": "UpdateAdminUserReq",
+      "required": [
+        "id",
+        "account",
+        "name",
+        "status",
+        "roleId"
+      ]
+    },
+    "UpdateAdminUserResp": {
+      "type": "object",
+      "title": "UpdateAdminUserResp"
+    }
+  },
   "securityDefinitions": {
     "apiKey": {
       "type": "apiKey",

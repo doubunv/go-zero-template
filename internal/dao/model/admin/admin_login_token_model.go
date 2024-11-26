@@ -2,6 +2,7 @@ package admin
 
 import (
 	"context"
+	"errors"
 	"go-api/internal/dao/model"
 	"go-api/internal/dao/schema"
 	"go-api/internal/svc"
@@ -28,9 +29,9 @@ func (model *AdminLoginTokenModel) getDb() *gorm.DB {
 }
 
 func (model *AdminLoginTokenModel) AddLoginToken(data *schema.AdminLoginToken) error {
-	var res schema.AdminInfo
+	var res schema.AdminLoginToken
 	err := model.getDb().Model(&schema.AdminLoginToken{}).Where("admin_id = ?", data.AdminId).First(&res).Error
-	if err != nil {
+	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		return err
 	}
 	if res.ID == 0 {
