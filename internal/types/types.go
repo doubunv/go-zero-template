@@ -40,6 +40,7 @@ type DeleteAdminUserResp struct {
 }
 
 type AdminUserListItem struct {
+	Id        int64  `json:"id"`
 	Account   string `json:"account"`   //账号，系统唯一
 	Name      string `json:"name"`      //账号名称
 	Status    int    `json:"status"`    //状态 1=正常 2=异常
@@ -52,7 +53,7 @@ type AdminUserListReq struct {
 	STime     string `json:"sTime,optional"`               //开始注册时间
 	ETime     string `json:"eTime,optional"`               //结束注册时间
 	Status    int    `json:"status,optional"`              //状态 1=正常 2=异常
-	SearchKey string `json:"searchKey"`                    //模糊搜索关键词
+	SearchKey string `json:"searchKey,optional"`           //模糊搜索关键词
 	Page      int64  `json:"page,optional,default=1"`      //当前页
 	PageSize  int64  `json:"pageSize,optional,default=20"` //每页展示的条数
 }
@@ -65,12 +66,12 @@ type AdminUserListResp struct {
 }
 
 type UpdateAdminUserReq struct {
-	Id       int64  `json:"id"`                //需要修改的用户ID
-	Account  string `json:"account"`           //账号，系统唯一
-	Name     string `json:"name"`              //账号名称
-	Password string `json:"password,optional"` //密码，如果不改动则不传
-	Status   int    `json:"status"`            //状态 1=正常 2=异常
-	RoleId   int64  `json:"roleId"`            // 角色ID
+	Id       int64  `json:"id"`                   //需要修改的用户ID
+	Account  string `json:"account"`              //账号，系统唯一
+	Name     string `json:"name"`                 //账号名称
+	Password string `json:"password,optional"`    //密码，如果不改动则不传
+	Status   int    `json:"status,options=[1,2]"` //状态 1=正常 2=异常
+	RoleId   int64  `json:"roleId"`               // 角色ID
 }
 
 type UpdateAdminUserResp struct {

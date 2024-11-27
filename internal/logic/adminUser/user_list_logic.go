@@ -66,7 +66,7 @@ func (l *UserListLogic) UserList(req *types.AdminUserListReq) (resp *types.Admin
 	resp.Total = total
 	for _, v := range list {
 		item := types.AdminUserListItem{}
-		copier.Copy(item, v)
+		copier.Copy(&item, v)
 
 		if name, ok := roleListMap[v.RoleId]; ok {
 			item.RoleName = name
