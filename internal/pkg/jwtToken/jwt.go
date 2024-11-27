@@ -32,7 +32,7 @@ const (
 var jwtSecret = []byte("kdd452-934sg4-l4d4q6")
 
 type Claims struct {
-	ID       int64  `json:"id"`
+	Uid      int64  `json:"uid"`
 	Source   string `json:"source"`
 	Sign     string `json:"sign"`
 	Business string `json:"business"`
@@ -40,11 +40,11 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-func Generate2Token(id int64, source string, sign string, roleId int64) (accessToken string, err error) {
+func Generate2Token(uid int64, source string, sign string, roleId int64) (accessToken string, err error) {
 	nowTime := time.Now()
 	expireTime := nowTime.Add(AccessTokenExpireDuration)
 	claims := Claims{
-		ID:     id,
+		Uid:    uid,
 		Source: source,
 		Sign:   sign,
 		RoleId: roleId,
@@ -66,21 +66,22 @@ func ParseToken(token string) (*Claims, error) {
 	tokenClaims, err := jwt.ParseWithClaims(token, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return jwtSecret, nil
 	})
-	if tokenClaims == nil {
-		return nil, errors.Wrap(err, "failed to parse token")
+	if tokenClaims != nil {
+		if claims, ok := tokenClaims.Claims.(*Claims); ok && tokenClaims.Valid {
+			return claims, nil
+		}
+	}
+	return nil, errors.Wrap(err, "failed to parse token")
+}
+
+func ParseRefreshToken(aToken string) (claims *Claims, err error) {
+	accessClaim, err := ParseToken(aToken)
+	if err != nil {
+		return claims, errors.WithMessage(err, "failed to parse accessToken")
 	}
 
-	var claims *Claims
-	var ok bool
-	if claims, ok = tokenClaims.Claims.(*Claims); !ok || !tokenClaims.Valid {
-		return nil, errors.Wrap(err, "failed to valid token")
-
+	if accessClaim.ExpiresAt > time.Now().Unix() {
+		return accessClaim, nil
 	}
-
-	if claims.ExpiresAt > time.Now().Unix() {
-		return nil, errors.Wrap(err, "token is expires time")
-	}
-
-	return claims, nil
-
+	return accessClaim, errors.WithMessage(errors.New("Token time out"), "failed to parse refreshToken")
 }

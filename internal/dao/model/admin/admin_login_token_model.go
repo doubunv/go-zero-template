@@ -77,3 +77,16 @@ func (model *AdminLoginTokenModel) GetList(in *schema.AdminInfo, pageQuery *mode
 	err = builder.Offset(pageQuery.Offset()).Limit(pageQuery.PageSize).Find(&rows).Error
 	return total, rows, err
 }
+
+func (model *AdminLoginTokenModel) FindOneByAdminId(adminId int64) schema.AdminLoginToken {
+	var res schema.AdminLoginToken
+	if adminId <= 0 {
+		return res
+	}
+	dbRes := model.getDb().Model(&schema.AdminLoginToken{}).Where("admin_id = ?", adminId).First(&res)
+	if err := dbRes.Error; err != nil {
+		if !errors.Is(err, gorm.ErrRecordNotFound) {
+		}
+	}
+	return res
+}

@@ -80,3 +80,22 @@ func (l *AdminLoginLogic) AdminLogin(req *types.AdminUserLoginReq) (resp *types.
 	resp.Token = token
 	return
 }
+
+func (l *AdminLoginLogic) CheckToken(token string) int64 {
+	parseToken, err := jwtToken.ParseRefreshToken(token)
+	if err != nil {
+		return 0
+	}
+	adminInfo := l.AdminInfoModel.FindOne(parseToken.Uid)
+	if adminInfo.ID == 0 ||
+		adminInfo.Status != schema.AdminInfoStatus1 {
+		return 0
+	}
+
+	loginTokenInfo := l.AdminLoginTokenModel.FindOneByAdminId(adminInfo.ID)
+	if loginTokenInfo.ID == 0 || parseToken.Sign != loginTokenInfo.TokenSign {
+		return 0
+	}
+
+	return parseToken.Uid
+}

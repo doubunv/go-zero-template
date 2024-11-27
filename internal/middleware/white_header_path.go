@@ -1,8 +1,10 @@
 package middleware
 
 import (
-	"go-api/internal/config"
+	"context"
+	"go-api/internal/logic/adminUser"
 	"go-api/internal/pkg/appMiddleware"
+	"go-api/internal/svc"
 	"net/http"
 )
 
@@ -12,8 +14,8 @@ func WhiteHeaderPath() map[string]int {
 	}
 }
 
-func CheckTokenHandle(c config.Config) appMiddleware.CheckRequestTokenFunc {
+func CheckTokenHandle(serverCtx *svc.ServiceContext) appMiddleware.CheckRequestTokenFunc {
 	return func(r *http.Request, token string) int64 {
-		return 1
+		return adminUser.NewAdminLoginLogic(context.Background(), serverCtx).CheckToken(token)
 	}
 }
