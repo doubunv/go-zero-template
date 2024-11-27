@@ -70,16 +70,16 @@ func (model *RoleModel) GetList(in *schema.RolePermission, pageQuery *model.Page
 }
 
 func (model *RoleModel) GetAllRoleByCache() ([]*schema.RolePermission, error) {
-	redisClient := model.svcCtx.RedisClient
+	//redisClient := model.svcCtx.RedisClient
 	//cacheData, _ := model.svcCtx.RedisClient.HGetAll(model.ctx, "RolePermission").Result()
 	//
 
 	rows := make([]*schema.RolePermission, 0)
 	err := model.getDb().Model(&schema.RolePermission{}).Find(&rows).Error
 	if len(rows) > 0 {
-		for _, v := range rows {
-			redisClient.HSet(model.ctx, model.RolePermissionKey, v)
-		}
+		//for _, v := range rows {
+		//	redisClient.HSet(model.ctx, model.RolePermissionKey, v)
+		//}
 	}
 	return rows, err
 }
