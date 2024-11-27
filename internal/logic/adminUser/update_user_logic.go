@@ -4,9 +4,9 @@ import (
 	"context"
 	"go-api/internal/dao/model/admin"
 	"go-api/internal/dao/schema"
-	"go-api/internal/pkg/commonTool"
 	"go-api/internal/svc"
 	"go-api/internal/types"
+	"go-api/pkg/commonTool"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

@@ -5,9 +5,9 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
 	"go-api/internal/dao/model/admin"
-	"go-api/internal/pkg/headInfo"
 	"go-api/internal/svc"
 	"go-api/internal/types"
+	"go-api/pkg/headInfo"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

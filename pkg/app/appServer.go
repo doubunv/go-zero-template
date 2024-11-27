@@ -3,8 +3,8 @@ package app
 import (
 	"github.com/sirupsen/logrus"
 	"github.com/zeromicro/go-zero/core/logx"
-	"go-api/internal/pkg/dbM"
-	"go-api/internal/pkg/logs"
+	"go-api/pkg/dbM"
+	"go-api/pkg/logs"
 )
 
 func init() {

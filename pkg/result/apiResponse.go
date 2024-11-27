@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"go-api/internal/pkg/result/xcode"
+	"go-api/pkg/result/xcode"
 	"net/http"
 
 	"github.com/zeromicro/go-zero/core/logc"

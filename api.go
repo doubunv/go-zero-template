@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"go-api/internal/pkg/app"
-	"go-api/internal/pkg/appMiddleware"
-	"go-api/internal/pkg/logs/xcode"
+	"go-api/pkg/app"
+	"go-api/pkg/appMiddleware"
+	"go-api/pkg/logs/xcode"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
@@ -30,7 +30,7 @@ func main() {
 	ctx := svc.NewServiceContext(c)
 	var opt = []app.SMOption{
 		app.WithWhiteHeaderPathSMOption(middleware.WhiteHeaderPath()),
-		app.WithCheckTokenHandleSMOption(middleware.CheckTokenHandle(c)),
+		app.WithCheckTokenHandleSMOption(middleware.CheckTokenHandle(ctx)),
 	}
 
 	if c.IsDebug {

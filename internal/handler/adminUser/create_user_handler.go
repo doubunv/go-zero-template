@@ -1,7 +1,7 @@
 package adminUser
 
 import (
-	"go-api/internal/pkg/result"
+	"go-api/pkg/result"
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"

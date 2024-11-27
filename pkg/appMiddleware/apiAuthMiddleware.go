@@ -1,7 +1,7 @@
 package appMiddleware
 
 import (
-	"go-api/internal/pkg/result"
+	"go-api/pkg/result"
 	"net/http"
 )
 

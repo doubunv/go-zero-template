@@ -3,13 +3,14 @@ package middleware
 import (
 	"context"
 	"go-api/internal/logic/adminUser"
-	"go-api/internal/pkg/appMiddleware"
 	"go-api/internal/svc"
+	"go-api/pkg/appMiddleware"
 	"net/http"
 )
 
 func WhiteHeaderPath() map[string]int {
 	return map[string]int{
+		"/swagger":             1,
 		"/adminUser/userLogin": 1,
 	}
 }

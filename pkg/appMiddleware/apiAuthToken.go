@@ -1,10 +1,10 @@
 package appMiddleware
 
 import (
-	"go-api/internal/pkg/consts"
-	"go-api/internal/pkg/ctxMd"
-	"go-api/internal/pkg/headInfo"
-	"go-api/internal/pkg/result/xcode"
+	"go-api/pkg/consts"
+	"go-api/pkg/ctxMd"
+	"go-api/pkg/headInfo"
+	"go-api/pkg/result/xcode"
 	"google.golang.org/grpc/metadata"
 	"net/http"
 	"strconv"

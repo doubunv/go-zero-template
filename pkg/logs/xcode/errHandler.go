@@ -2,7 +2,7 @@ package xcode
 
 import (
 	"errors"
-	"go-api/internal/pkg/result/xcode"
+	"go-api/pkg/result/xcode"
 	"net/http"
 
 	"google.golang.org/grpc/codes"

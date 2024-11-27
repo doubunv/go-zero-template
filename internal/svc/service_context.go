@@ -3,7 +3,7 @@ package svc
 import (
 	"github.com/redis/go-redis/v9"
 	"go-api/internal/config"
-	"go-api/internal/pkg/dbM"
+	"go-api/pkg/dbM"
 )
 
 type ServiceContext struct {

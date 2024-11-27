@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/zeromicro/go-zero/rest"
-	"go-api/internal/pkg/appMiddleware"
+	"go-api/pkg/appMiddleware"
 )
 
 type SMOption func(s *ServerMiddleware)

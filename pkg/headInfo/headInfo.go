@@ -2,8 +2,8 @@ package headInfo
 
 import (
 	"context"
-	"go-api/internal/pkg/consts"
-	"go-api/internal/pkg/ctxMd"
+	"go-api/pkg/consts"
+	"go-api/pkg/ctxMd"
 	"go.opentelemetry.io/otel/trace"
 	"google.golang.org/grpc/metadata"
 	"strconv"

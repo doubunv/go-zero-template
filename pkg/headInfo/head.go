@@ -3,7 +3,7 @@ package headInfo
 import (
 	"context"
 	"encoding/json"
-	"go-api/internal/pkg/consts"
+	"go-api/pkg/consts"
 	"go.opentelemetry.io/otel/trace"
 	"net"
 	"net/http"
