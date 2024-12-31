@@ -1,7 +1,5 @@
 package schema
 
-import "gorm.io/gorm"
-
 type AdminInfo struct {
 	ID           int64  `gorm:"column:id"`
 	Account      string `gorm:"column:account"`
@@ -10,7 +8,9 @@ type AdminInfo struct {
 	PasswordSign string `gorm:"column:password_sign"`
 	RoleId       int64  `gorm:"column:role_id"`
 	Status       int    `gorm:"column:status"`
-	gorm.Model
+	CreatedAt    int64  `gorm:"column:created_at"`
+	UpdatedAt    int64  `gorm:"column:updated_at"`
+	DeletedAt    int64  `gorm:"column:deleted_at"`
 }
 
 func (u AdminInfo) TableName() string {

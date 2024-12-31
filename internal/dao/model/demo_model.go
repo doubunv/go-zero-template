@@ -18,7 +18,7 @@ type DemoInfoModel struct {
 func NewDemoInfoModel(ctx context.Context, svcCtx *svc.ServiceContext) *DemoInfoModel {
 	return &DemoInfoModel{
 		ctx: ctx,
-		db:  svcCtx.DbSelect.GetDb(ctx, DBAdmin),
+		db:  svcCtx.DbSelect.GetDb(ctx, DB),
 	}
 }
 
@@ -38,7 +38,7 @@ func (model *DemoInfoModel) FindOne(id int64) schema.AdminInfo {
 }
 
 func (model *DemoInfoModel) InsertSchema(data *schema.AdminInfo) error {
-	data.CreatedAt = time.Now()
+	data.CreatedAt = time.Now().Unix()
 	dbRes := model.getDb().Model(&schema.AdminInfo{}).Create(data)
 	if err := dbRes.Error; err != nil {
 		return err
@@ -51,8 +51,15 @@ func (model *DemoInfoModel) UpdateByMap(id int64, data *schema.AdminInfo) error 
 	return model.getDb().Model(&schema.AdminInfo{}).Where("id = ?", id).Updates(map[string]interface{}{}).Error
 }
 
-func (model *DemoInfoModel) GetList(in *schema.AdminInfo, pageQuery *PageQuery) (int64, []*schema.AdminInfo, error) {
+func (model *DemoInfoModel) GetList(in *schema.AdminInfo, sTime, eTime string, pageQuery *PageQuery) (int64, []*schema.AdminInfo, error) {
 	builder := model.getDb().Model(&schema.AdminInfo{})
+	if sTime != "" {
+		builder = builder.Where("created_at >= ?", sTime)
+	}
+	if eTime != "" {
+		builder = builder.Where("created_at < ?", eTime)
+	}
+
 	total := int64(0)
 	err := builder.Count(&total).Error
 	if err != nil {
@@ -60,6 +67,6 @@ func (model *DemoInfoModel) GetList(in *schema.AdminInfo, pageQuery *PageQuery) 
 	}
 
 	rows := make([]*schema.AdminInfo, 0)
-	err = builder.Offset(pageQuery.Offset()).Limit(pageQuery.PageSize).Find(&rows).Error
+	err = builder.Order("id desc").Offset(pageQuery.Offset()).Limit(pageQuery.PageSize).Find(&rows).Error
 	return total, rows, err
 }

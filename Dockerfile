@@ -1,4 +1,4 @@
-FROM registry.leadsea.cn/golang:1.22      AS builder
+FROM golang:alpine AS builder
 LABEL stage=gobuilder
 ENV CGO_ENABLED 0
 RUN mkdir -p /www

@@ -1,4 +1,4 @@
-package admin
+package mysql
 
 import (
 	"context"
@@ -20,7 +20,7 @@ func NewAdminLoginTokenModel(ctx context.Context, svcCtx *svc.ServiceContext) *A
 	return &AdminLoginTokenModel{
 		ctx:    ctx,
 		svcCtx: svcCtx,
-		db:     svcCtx.DbSelect.GetDb(ctx, model.DBAdmin),
+		db:     svcCtx.DbSelect.GetDb(ctx, model.DB),
 	}
 }
 

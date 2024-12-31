@@ -177,6 +177,789 @@
         ]
       }
     },
+    "/agent/getAgentDetail": {
+      "post": {
+        "summary": "查询代理详情",
+        "operationId": "getAgentDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetAgentDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetAgentDetailReq"
+            }
+          }
+        ],
+        "tags": [
+          "agent"
+        ]
+      }
+    },
+    "/agent/getAgentList": {
+      "post": {
+        "summary": "代理人列表",
+        "operationId": "getAgentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetAgentListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetAgentListReq"
+            }
+          }
+        ],
+        "tags": [
+          "agent"
+        ]
+      }
+    },
+    "/club/addClubAgent": {
+      "post": {
+        "summary": "新增俱乐部代理信息",
+        "operationId": "addClubAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddClubAgentResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddClubAgentReq"
+            }
+          }
+        ],
+        "tags": [
+          "club"
+        ]
+      }
+    },
+    "/club/getClubDetail": {
+      "post": {
+        "summary": "俱乐部详情",
+        "operationId": "getClubDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetClubDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetClubDetailReq"
+            }
+          }
+        ],
+        "tags": [
+          "club"
+        ]
+      }
+    },
+    "/club/getClubList": {
+      "post": {
+        "summary": "俱乐部列表",
+        "operationId": "getClubList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetClubListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetClubListReq"
+            }
+          }
+        ],
+        "tags": [
+          "club"
+        ]
+      }
+    },
+    "/club/updateClubAgent": {
+      "post": {
+        "summary": "修改俱乐部代理信息",
+        "operationId": "updateClubAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateClubAgentResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateClubAgentReq"
+            }
+          }
+        ],
+        "tags": [
+          "club"
+        ]
+      }
+    },
+    "/customerChat/addChatRoomRemark": {
+      "post": {
+        "summary": "添加房间备注",
+        "operationId": "addChatRoomRemark",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddChatRoomRemarkResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddChatRoomRemarkReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/changeChatRoomStatus": {
+      "post": {
+        "summary": "更改聊天室状态",
+        "operationId": "changeChatRoomStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ChangeChatRoomStatusResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangeChatRoomStatusReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getChatMsg": {
+      "post": {
+        "summary": "翻页查询聊天消息",
+        "operationId": "getChatMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatMsgReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getChatMsgByMaxId": {
+      "post": {
+        "summary": "根据ID倒序查询聊天消息",
+        "operationId": "getChatMsgByMaxId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatMsgByMaxIdResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatMsgByMaxIdReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getChatRoom": {
+      "post": {
+        "summary": "通过用户ID获取当前uid的聊天室信息",
+        "operationId": "getChatRoom",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomRoomResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomRoomReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getChatRoomDetail": {
+      "post": {
+        "summary": "获取聊天室详情",
+        "operationId": "getChatRoomDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomDetailReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getChatRoomList": {
+      "post": {
+        "summary": "获取聊天室列表",
+        "operationId": "getChatRoomList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomListReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getChatRoomLog": {
+      "post": {
+        "summary": "获取聊天室操作日志",
+        "operationId": "getChatRoomLog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomLogResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetChatRoomLogReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/getCustomer": {
+      "post": {
+        "summary": "获取一个后台客服账号",
+        "operationId": "getOneCustomer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetOneCustomerResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetOneCustomerReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/customerChat/sendChatMsg": {
+      "post": {
+        "summary": "发送在线消息",
+        "operationId": "sendChatMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SendChatMsgResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendChatMsgReq"
+            }
+          }
+        ],
+        "tags": [
+          "customerChat"
+        ]
+      }
+    },
+    "/gameUser/getPrivateGameList": {
+      "post": {
+        "summary": "德州扑克-私厅列表",
+        "operationId": "getPrivateGameList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetPrivateGameListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetPrivateGameListReq"
+            }
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/gameUser/getPublicGameDetail": {
+      "post": {
+        "summary": "德州扑克-公厅详情",
+        "operationId": "getPublicGameDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetPublicGameDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetPublicGameDetailReq"
+            }
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/gameUser/getPublicGameList": {
+      "post": {
+        "summary": "德州扑克-公厅列表",
+        "operationId": "getPublicGameList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetPublicGameListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetPublicGameListReq"
+            }
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/gameUser/getPublicPlayKindGameList": {
+      "post": {
+        "summary": "德州扑克-公厅二级玩法类型列表",
+        "operationId": "getPublicPlayKindGameList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetPublicPlayKindGameListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetPublicPlayKindGameListReq"
+            }
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/gameUser/getUserDetail": {
+      "post": {
+        "summary": "用户详情",
+        "operationId": "getUserDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserDetailResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserDetailReq"
+            }
+          }
+        ],
+        "tags": [
+          "gameUser"
+        ]
+      }
+    },
+    "/gameUser/getUserList": {
+      "post": {
+        "summary": "用户列表",
+        "operationId": "getUserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserListReq"
+            }
+          }
+        ],
+        "tags": [
+          "gameUser"
+        ]
+      }
+    },
+    "/gameUser/outUserClub": {
+      "post": {
+        "summary": "踢出俱乐部",
+        "operationId": "outUserClub",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutUserClubResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OutUserClubReq"
+            }
+          }
+        ],
+        "tags": [
+          "gameUser"
+        ]
+      }
+    },
+    "/gameUser/setChatStatus": {
+      "post": {
+        "summary": "聊天状态设置",
+        "operationId": "setChatStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SetChatStatusResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetChatStatusReq"
+            }
+          }
+        ],
+        "tags": [
+          "gameUser"
+        ]
+      }
+    },
+    "/gameUser/setHostStatus": {
+      "post": {
+        "summary": "房间状态控制",
+        "operationId": "setHostStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SetHostStatusResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetHostStatusReq"
+            }
+          }
+        ],
+        "tags": [
+          "game"
+        ]
+      }
+    },
+    "/gameUser/setUserStatus": {
+      "post": {
+        "summary": "账号封禁",
+        "operationId": "setUserStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SetUserStatusResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetUserStatusReq"
+            }
+          }
+        ],
+        "tags": [
+          "gameUser"
+        ]
+      }
+    },
+    "/gameUser/stopUserPlay": {
+      "post": {
+        "summary": "踢出桌子",
+        "operationId": "stopUserPlay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StopUserPlayResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StopUserPlayReq"
+            }
+          }
+        ],
+        "tags": [
+          "gameUser"
+        ]
+      }
+    },
+    "/statistic/onlinePlayCount": {
+      "post": {
+        "summary": "用户在线打点统计",
+        "operationId": "onlinePlayCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OnlinePlayCountResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OnlinePlayCountReq"
+            }
+          }
+        ],
+        "tags": [
+          "statistic"
+        ]
+      }
+    },
+    "/statistic/userActiveCount": {
+      "post": {
+        "summary": "用户每日活跃数",
+        "operationId": "userActiveCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserActiveCountResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserActiveCountReq"
+            }
+          }
+        ],
+        "tags": [
+          "statistic"
+        ]
+      }
+    },
     "/swagger": {
       "get": {
         "operationId": "swagger",
@@ -193,6 +976,67 @@
     }
   },
   "definitions": {
+    "AddChatRoomRemarkReq": {
+      "type": "object",
+      "properties": {
+        "imRoomId": {
+          "type": "string",
+          "description": "IM房间地址"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        }
+      },
+      "title": "AddChatRoomRemarkReq",
+      "required": [
+        "imRoomId",
+        "remark"
+      ]
+    },
+    "AddChatRoomRemarkResp": {
+      "type": "object",
+      "title": "AddChatRoomRemarkResp"
+    },
+    "AddClubAgentReq": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "代理ID"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        },
+        "remark": {
+          "type": "string",
+          "description": "俱乐部备注说明"
+        },
+        "cooperationType": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[2"
+          ],
+          "description": "合作类型：1=普通不是的代理 2=联合 3=独代"
+        },
+        "rebateConf": {
+          "$ref": "#/definitions/RebateConf",
+          "description": "收益分配配置"
+        }
+      },
+      "title": "AddClubAgentReq",
+      "required": [
+        "ownerId"
+      ]
+    },
+    "AddClubAgentResp": {
+      "type": "object",
+      "title": "AddClubAgentResp"
+    },
     "AdminUserListItem": {
       "type": "object",
       "properties": {
@@ -345,6 +1189,79 @@
         "roleMenuItemList"
       ]
     },
+    "ChangeChatRoomStatusReq": {
+      "type": "object",
+      "properties": {
+        "imRoomId": {
+          "type": "string",
+          "description": "IM房间地址"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "1=用户请求消息，2=客服已回复，3=聊天已结束"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "imAccount": {
+          "type": "string",
+          "description": "IM账号ID"
+        },
+        "accountType": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "账号类型，1=前端用户，2=后端客服"
+        }
+      },
+      "title": "ChangeChatRoomStatusReq",
+      "required": [
+        "imRoomId",
+        "status",
+        "imAccount",
+        "accountType"
+      ]
+    },
+    "ChangeChatRoomStatusResp": {
+      "type": "object",
+      "title": "ChangeChatRoomStatusResp"
+    },
+    "ClubRebateConf": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "description": "收益分配值"
+        },
+        "rType": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "收益人类型 1=系统，2=俱乐部"
+        },
+        "base": {
+          "type": "integer",
+          "format": "int32",
+          "description": "比例基数，千分比就是1000"
+        }
+      },
+      "title": "ClubRebateConf",
+      "required": [
+        "value",
+        "rType",
+        "base"
+      ]
+    },
     "CreateAdminUserReq": {
       "type": "object",
       "properties": {
@@ -407,6 +1324,1000 @@
       "type": "object",
       "title": "DeleteAdminUserResp"
     },
+    "GetAgentDetailReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetAgentDetailReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "GetAgentDetailResp": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "cooperationType": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 合作类型：1=普通不是的代理 2=联合 3=独代"
+        },
+        "totalEarnings": {
+          "type": "integer",
+          "format": "int64",
+          "description": "汇总收益"
+        }
+      },
+      "title": "GetAgentDetailResp",
+      "required": [
+        "uid",
+        "name",
+        "remark",
+        "cooperationType",
+        "totalEarnings"
+      ]
+    },
+    "GetAgentListItem": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "cooperation_type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "合作类型：1=已终止 2=联合 3=独代"
+        },
+        "total_earnings": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总收益"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GetAgentListItem",
+      "required": [
+        "uid",
+        "userName",
+        "cooperation_type",
+        "total_earnings",
+        "remark",
+        "createdAt"
+      ]
+    },
+    "GetAgentListReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "cooperation_type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "合作类型：1=终止 2=联合 3=独代"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetAgentListReq"
+    },
+    "GetAgentListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetAgentListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetAgentListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetChatMsgByMaxIdReq": {
+      "type": "object",
+      "properties": {
+        "imAccount": {
+          "type": "string",
+          "description": "发送的用户IM账号"
+        },
+        "appId": {
+          "type": "string",
+          "description": "应用业务ID"
+        },
+        "roomId": {
+          "type": "string",
+          "description": "房间ID 和 目标用户ID 二选一"
+        },
+        "maxId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最大ID"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页条数"
+        }
+      },
+      "title": "GetChatMsgByMaxIdReq"
+    },
+    "GetChatMsgByMaxIdResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetChatMsgItem"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetChatMsgByMaxIdResp",
+      "required": [
+        "list",
+        "total"
+      ]
+    },
+    "GetChatMsgItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "imAccount": {
+          "type": "string",
+          "description": "发送的用户IM账号"
+        },
+        "uidName": {
+          "type": "string",
+          "description": "发送的用户名称"
+        },
+        "appId": {
+          "type": "string",
+          "description": "应用业务ID"
+        },
+        "roomId": {
+          "type": "string",
+          "description": "房间ID 和 目标用户ID 二选一"
+        },
+        "messageType": {
+          "type": "string",
+          "description": "消息类型，text=文本类型"
+        },
+        "message": {
+          "type": "string",
+          "description": "具体的消息类型"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "消息时间"
+        }
+      },
+      "title": "GetChatMsgItem",
+      "required": [
+        "id",
+        "imAccount",
+        "uidName",
+        "appId",
+        "roomId",
+        "messageType",
+        "message",
+        "createdAt"
+      ]
+    },
+    "GetChatMsgReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始创建时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束创建时间"
+        },
+        "messageType": {
+          "type": "string",
+          "description": "消息类型，text=文本类型，pic=图片类型"
+        },
+        "imAccount": {
+          "type": "string",
+          "description": "发送的用户IM账号"
+        },
+        "appId": {
+          "type": "string",
+          "description": "应用业务ID"
+        },
+        "roomId": {
+          "type": "string",
+          "description": "房间ID 和 目标用户ID 二选一"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetChatMsgReq"
+    },
+    "GetChatMsgResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetChatMsgItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetChatMsgResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetChatRoomDetailReq": {
+      "type": "object",
+      "properties": {
+        "imRoomId": {
+          "type": "string",
+          "description": "IM房间地址"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        }
+      },
+      "title": "GetChatRoomDetailReq"
+    },
+    "GetChatRoomDetailResp": {
+      "type": "object",
+      "properties": {
+        "imAccount": {
+          "type": "string",
+          "description": "用户IM账号"
+        },
+        "imAccountToken": {
+          "type": "string",
+          "description": "用户IM账号token"
+        },
+        "imRoomId": {
+          "type": "string"
+        },
+        "imRoomName": {
+          "type": "string",
+          "description": "房间名字"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=用户请求消息，2=客服已回复，3=聊天已结束"
+        },
+        "endTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "结束类型 会话结束类型 1=用户主动结束 2=客服主动结束"
+        },
+        "adminName": {
+          "type": "string",
+          "description": "最后操作管理员"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "imDefaultWebAddr": {
+          "type": "string",
+          "description": "web端地址，clienttype=1, 主要给客服使用"
+        },
+        "lastCustomerName": {
+          "type": "string",
+          "description": "最后更新客服名称"
+        },
+        "lastCustomerAccount": {
+          "type": "string",
+          "description": "最后更新客服账号"
+        },
+        "userLastTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户最后操作时间"
+        },
+        "customerLastTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "客服最后操作时间"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        }
+      },
+      "title": "GetChatRoomDetailResp",
+      "required": [
+        "imAccount",
+        "imAccountToken",
+        "imRoomId",
+        "imRoomName",
+        "uid",
+        "userName",
+        "updatedAt",
+        "status",
+        "endTime",
+        "endType",
+        "adminName",
+        "remark",
+        "imDefaultWebAddr",
+        "lastCustomerName",
+        "lastCustomerAccount",
+        "userLastTime",
+        "customerLastTime",
+        "createdAt"
+      ]
+    },
+    "GetChatRoomListItem": {
+      "type": "object",
+      "properties": {
+        "imRoomId": {
+          "type": "string",
+          "description": "房间ID"
+        },
+        "imRoomName": {
+          "type": "string",
+          "description": "房间名字"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=用户请求消息，2=客服已回复，3=聊天已结束"
+        },
+        "endTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "结束类型 会话结束类型 1=用户主动结束 2=客服主动结束"
+        },
+        "adminName": {
+          "type": "string",
+          "description": "最后操作管理员"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "imDefaultWebAddr": {
+          "type": "string",
+          "description": "web端地址，clienttype=1, 主要给客服使用"
+        },
+        "lastCustomerName": {
+          "type": "string",
+          "description": "最后更新客服名称"
+        },
+        "lastCustomerAccount": {
+          "type": "string",
+          "description": "最后更新客服账号"
+        }
+      },
+      "title": "GetChatRoomListItem",
+      "required": [
+        "imRoomId",
+        "imRoomName",
+        "uid",
+        "userName",
+        "updatedAt",
+        "status",
+        "endTime",
+        "endType",
+        "adminName",
+        "remark",
+        "imDefaultWebAddr",
+        "lastCustomerName",
+        "lastCustomerAccount"
+      ]
+    },
+    "GetChatRoomListReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始更新时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束更新时间"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=用户请求消息，2=客服已回复，3=聊天已结束"
+        },
+        "searchKey": {
+          "type": "string",
+          "description": "模糊搜索关键词"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetChatRoomListReq"
+    },
+    "GetChatRoomListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetChatRoomListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetChatRoomListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetChatRoomLogItem": {
+      "type": "object",
+      "properties": {
+        "imRoomId": {
+          "type": "string",
+          "description": "房间ID"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "adminId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "管理员ID"
+        },
+        "adminName": {
+          "type": "string",
+          "description": "管理员名称"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1=用户请求消息，2=客服已回复，3=聊天已结束"
+        }
+      },
+      "title": "GetChatRoomLogItem",
+      "required": [
+        "imRoomId",
+        "uid",
+        "userName",
+        "adminId",
+        "adminName",
+        "createdAt",
+        "remark",
+        "status"
+      ]
+    },
+    "GetChatRoomLogReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始创建时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束创建时间"
+        },
+        "imRoomId": {
+          "type": "string",
+          "description": "房间ID"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetChatRoomLogReq",
+      "required": [
+        "imRoomId"
+      ]
+    },
+    "GetChatRoomLogResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetChatRoomLogItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetChatRoomLogResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetChatRoomRoomReq": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "用户登录token"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "appId": {
+          "type": "string",
+          "enum": [
+            "[101]"
+          ],
+          "description": "应用业务ID"
+        },
+        "clientType": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "default": "1",
+          "description": " 1:weblink（客户端为web端时使用）; 2:commonlink（客户端为非web端时使用）;3:wechatlink(微信小程序使用), 默认1"
+        }
+      },
+      "title": "GetChatRoomRoomReq",
+      "required": [
+        "uid",
+        "clientType"
+      ]
+    },
+    "GetChatRoomRoomResp": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "imAccount": {
+          "type": "string",
+          "description": "IM账号ID"
+        },
+        "imAccountToken": {
+          "type": "string",
+          "description": "IM账号token"
+        },
+        "imRoomId": {
+          "type": "string",
+          "description": "IM房间ID"
+        },
+        "imRoomAddr": {
+          "type": "string",
+          "description": "IM房间地址"
+        },
+        "imAppKey": {
+          "type": "string",
+          "description": "IM 应用key"
+        }
+      },
+      "title": "GetChatRoomRoomResp",
+      "required": [
+        "uid",
+        "imAccount",
+        "imAccountToken",
+        "imRoomId",
+        "imRoomAddr",
+        "imAppKey"
+      ]
+    },
+    "GetClubDetailReq": {
+      "type": "object",
+      "properties": {
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        }
+      },
+      "title": "GetClubDetailReq",
+      "required": [
+        "clubId"
+      ]
+    },
+    "GetClubDetailResp": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "代理ID"
+        },
+        "ownerName": {
+          "type": "string",
+          "description": "代理名词"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "俱乐部名称"
+        },
+        "members": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部人数"
+        },
+        "clubTotalEarnings": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部汇总收益"
+        },
+        "created_at": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "totalOnlineTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部私局运行时长"
+        },
+        "rebateConf": {
+          "$ref": "#/definitions/RebateConf",
+          "description": "收益分配配置"
+        }
+      },
+      "title": "GetClubDetailResp",
+      "required": [
+        "ownerId",
+        "ownerName",
+        "clubId",
+        "name",
+        "members",
+        "clubTotalEarnings",
+        "created_at",
+        "totalOnlineTime",
+        "rebateConf"
+      ]
+    },
+    "GetClubListItem": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "代理ID"
+        },
+        "ownerName": {
+          "type": "string",
+          "description": "代理名词"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "俱乐部名称"
+        },
+        "members": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部人数"
+        },
+        "clubTotalEarnings": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部汇总收益"
+        },
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "remark": {
+          "type": "string",
+          "description": "俱乐部备注说明"
+        },
+        "cooperationType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "合作类型：1=普通不是的代理 2=联合 3=独代"
+        }
+      },
+      "title": "GetClubListItem",
+      "required": [
+        "ownerId",
+        "ownerName",
+        "clubId",
+        "name",
+        "members",
+        "clubTotalEarnings",
+        "createdAt",
+        "remark",
+        "cooperationType"
+      ]
+    },
+    "GetClubListReq": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "代理ID"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        },
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始创建时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束创建时间"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        },
+        "cooperationType": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "合作类型：1=普通不是的代理 2=联合 3=独代"
+        }
+      },
+      "title": "GetClubListReq"
+    },
+    "GetClubListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetClubListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetClubListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
     "GetOneAdminUserReq": {
       "type": "object",
       "properties": {
@@ -467,6 +2378,819 @@
         "roleName"
       ]
     },
+    "GetOneCustomerReq": {
+      "type": "object",
+      "title": "GetOneCustomerReq"
+    },
+    "GetOneCustomerResp": {
+      "type": "object",
+      "properties": {
+        "imAccount": {
+          "type": "string",
+          "description": "IM账号ID"
+        },
+        "imAccountToken": {
+          "type": "string",
+          "description": "IM账号token"
+        },
+        "chatCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "正在处理的会话数量"
+        },
+        "imAppKey": {
+          "type": "string",
+          "description": "IM 应用key"
+        },
+        "name": {
+          "type": "string",
+          "description": "客户名称"
+        }
+      },
+      "title": "GetOneCustomerResp",
+      "required": [
+        "imAccount",
+        "imAccountToken",
+        "chatCount",
+        "imAppKey",
+        "name"
+      ]
+    },
+    "GetPrivateGameListItem": {
+      "type": "object",
+      "properties": {
+        "hostId": {
+          "type": "string",
+          "description": "房间ID"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "房间名称"
+        },
+        "onlineMember": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间在线人数"
+        },
+        "hostMember": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间创建人数"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间创建时间"
+        },
+        "sbet": {
+          "type": "integer",
+          "format": "int64",
+          "description": "小盲"
+        },
+        "bbet": {
+          "type": "integer",
+          "format": "int64",
+          "description": "大盲"
+        },
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间创建者"
+        },
+        "createFee": {
+          "type": "integer",
+          "format": "int64",
+          "description": "手续费"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID，为0就是个人，大于0为 俱乐部"
+        },
+        "clubName": {
+          "type": "string",
+          "description": "俱乐部名字"
+        },
+        "killedTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束时间"
+        },
+        "onlineStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否进行 1=在进行，2=不在进行"
+        }
+      },
+      "title": "GetPrivateGameListItem",
+      "required": [
+        "hostId",
+        "hostName",
+        "onlineMember",
+        "hostMember",
+        "createTime",
+        "sbet",
+        "bbet",
+        "ownerId",
+        "createFee",
+        "clubId",
+        "clubName",
+        "killedTime",
+        "onlineStatus"
+      ]
+    },
+    "GetPrivateGameListReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始创建时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束创建时间"
+        },
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房主ID"
+        },
+        "onlineStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否进行 1=在进行，2=不在进行"
+        },
+        "hostKind": {
+          "type": "integer",
+          "format": "int32",
+          "description": "房间类型，0=全部 1=公局 2=私局"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetPrivateGameListReq"
+    },
+    "GetPrivateGameListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetPrivateGameListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetPrivateGameListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetPublicGameDetailReq": {
+      "type": "object",
+      "properties": {
+        "hostId": {
+          "type": "string",
+          "description": "房间ID"
+        }
+      },
+      "title": "GetPublicGameDetailReq",
+      "required": [
+        "hostId"
+      ]
+    },
+    "GetPublicGameDetailResp": {
+      "type": "object",
+      "properties": {
+        "hostId": {
+          "type": "string",
+          "description": "房间ID"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "房间名称"
+        }
+      },
+      "title": "GetPublicGameDetailResp",
+      "required": [
+        "hostId",
+        "hostName"
+      ]
+    },
+    "GetPublicGameListReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始创建时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束创建时间"
+        },
+        "hostId": {
+          "type": "string",
+          "description": "房间ID"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "房间名称"
+        },
+        "playKind": {
+          "type": "integer",
+          "format": "int32",
+          "description": "玩法类型"
+        },
+        "onlineStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否进行 1=在进行，2=不在进行"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetPublicGameListReq"
+    },
+    "GetPublicGameListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetPublicGamePlayItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetPublicGameListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetPublicGamePlayItem": {
+      "type": "object",
+      "properties": {
+        "shortPlayId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "玩法ID，前4位"
+        },
+        "playName": {
+          "type": "string",
+          "description": "玩法名称"
+        },
+        "onlineMember": {
+          "type": "integer",
+          "format": "int64",
+          "description": "在线人数"
+        },
+        "hostMember": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间创建人数"
+        },
+        "taxFee": {
+          "type": "integer",
+          "format": "int64",
+          "description": "税收"
+        },
+        "sbet": {
+          "type": "integer",
+          "format": "int64",
+          "description": "小盲"
+        },
+        "bbet": {
+          "type": "integer",
+          "format": "int64",
+          "description": "大盲"
+        }
+      },
+      "title": "GetPublicGamePlayItem",
+      "required": [
+        "shortPlayId",
+        "playName",
+        "onlineMember",
+        "hostMember",
+        "taxFee",
+        "sbet",
+        "bbet"
+      ]
+    },
+    "GetPublicPlayKindGameListItem": {
+      "type": "object",
+      "properties": {
+        "playId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "玩法类型ID"
+        },
+        "onlineMember": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间在线人数"
+        },
+        "hostMember": {
+          "type": "integer",
+          "format": "int64",
+          "description": "房间创建人数"
+        },
+        "taxFee": {
+          "type": "integer",
+          "format": "int64",
+          "description": "税收"
+        },
+        "hostStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "房间匹配状态 1=开启，2=关闭"
+        },
+        "minTakeIn": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最小带入值"
+        }
+      },
+      "title": "GetPublicPlayKindGameListItem",
+      "required": [
+        "playId",
+        "onlineMember",
+        "hostMember",
+        "taxFee",
+        "hostStatus",
+        "minTakeIn"
+      ]
+    },
+    "GetPublicPlayKindGameListReq": {
+      "type": "object",
+      "properties": {
+        "shortPlayId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "玩法ID，前4位"
+        },
+        "sbet": {
+          "type": "integer",
+          "format": "int64",
+          "description": "小盲"
+        },
+        "bbet": {
+          "type": "integer",
+          "format": "int64",
+          "description": "大盲"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetPublicPlayKindGameListReq",
+      "required": [
+        "shortPlayId",
+        "sbet",
+        "bbet"
+      ]
+    },
+    "GetPublicPlayKindGameListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetPublicPlayKindGameListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetPublicPlayKindGameListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
+    "GetUserDetailClubItem": {
+      "type": "object",
+      "properties": {
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        },
+        "clubName": {
+          "type": "string",
+          "description": "俱乐部名称"
+        }
+      },
+      "title": "GetUserDetailClubItem",
+      "required": [
+        "clubId",
+        "clubName"
+      ]
+    },
+    "GetUserDetailGameAnalysData": {
+      "type": "object",
+      "properties": {
+        "playTotalCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总游戏局数"
+        },
+        "vpip": {
+          "type": "number",
+          "format": "double"
+        },
+        "etf": {
+          "type": "number",
+          "format": "double"
+        },
+        "af": {
+          "type": "number",
+          "format": "double"
+        },
+        "pfr": {
+          "type": "number",
+          "format": "double"
+        },
+        "3-bet": {
+          "type": "number",
+          "format": "double"
+        },
+        "e-bet": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "GetUserDetailGameAnalysData",
+      "required": [
+        "playTotalCount",
+        "vpip",
+        "etf",
+        "af",
+        "pfr",
+        "3-bet",
+        "e-bet"
+      ]
+    },
+    "GetUserDetailGameItem": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "游戏ID"
+        },
+        "gameName": {
+          "type": "string",
+          "description": "游戏名称"
+        },
+        "playCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "游戏局数"
+        }
+      },
+      "title": "GetUserDetailGameItem",
+      "required": [
+        "gameId",
+        "gameName",
+        "playCount"
+      ]
+    },
+    "GetUserDetailReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        }
+      },
+      "title": "GetUserDetailReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "GetUserDetailResp": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 1=在线 2=不在线"
+        },
+        "registerTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册时间"
+        },
+        "lastLoginTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最后一次登录时间"
+        },
+        "gold": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户当前金币，【不包含桌子上的】"
+        },
+        "winScore": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户总输赢,有正、负数"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户状态，'1=封禁, 2=注销，10=正常'"
+        },
+        "openId": {
+          "type": "string",
+          "description": "'对应账号类型的ID,邮箱'"
+        },
+        "clubList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetUserDetailClubItem"
+          },
+          "description": "用户所在俱乐部"
+        },
+        "winRate": {
+          "type": "number",
+          "format": "double",
+          "description": "胜率"
+        },
+        "todayWinScore": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户今日总输赢,有正、负数"
+        },
+        "forbidChat": {
+          "type": "integer",
+          "format": "int32",
+          "description": "聊天状态，'1=禁止聊天，2=正常'"
+        },
+        "gamePlayData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetUserDetailGameItem"
+          },
+          "description": "用户每个游戏详情"
+        },
+        "gameAnalysData": {
+          "$ref": "#/definitions/GetUserDetailGameAnalysData",
+          "description": "用户游戏分析数据"
+        }
+      },
+      "title": "GetUserDetailResp",
+      "required": [
+        "uid",
+        "name",
+        "online",
+        "registerTime",
+        "lastLoginTime",
+        "gold",
+        "winScore",
+        "status",
+        "openId",
+        "clubList",
+        "winRate",
+        "todayWinScore",
+        "forbidChat",
+        "gamePlayData",
+        "gameAnalysData"
+      ]
+    },
+    "GetUserListItem": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": " 1=在线 2=不在线"
+        },
+        "registerTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册时间"
+        },
+        "lastLoginTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最后一次登录时间"
+        },
+        "gold": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户当前金币，【不包含桌子上的】"
+        },
+        "winScore": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户总输赢,有正、负数"
+        },
+        "chargeTotal": {
+          "type": "number",
+          "format": "double",
+          "description": "充值总金额"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户状态，'1=封禁, 2=注销，10=正常',"
+        }
+      },
+      "title": "GetUserListItem",
+      "required": [
+        "uid",
+        "name",
+        "online",
+        "registerTime",
+        "lastLoginTime",
+        "gold",
+        "winScore",
+        "chargeTotal",
+        "status"
+      ]
+    },
+    "GetUserListReq": {
+      "type": "object",
+      "properties": {
+        "sLastLoginTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始登录时间"
+        },
+        "eLastLoginTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束登录时间"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": "1在线 ，2离线"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户状态，'1=封禁, 2=注销，10=正常',"
+        },
+        "orderBy": {
+          "type": "string",
+          "description": "排序字段，'字段名[id,registerTime,lastLoginTime,gold,status,online],[asc=升序]/[desc=降序]'"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "default": "1",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": "20",
+          "description": "每页展示的条数"
+        }
+      },
+      "title": "GetUserListReq"
+    },
+    "GetUserListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GetUserListItem"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当前页"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页展示的条数"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总条数"
+        }
+      },
+      "title": "GetUserListResp",
+      "required": [
+        "list",
+        "page",
+        "pageSize",
+        "total"
+      ]
+    },
     "LoginRoleMenuItem": {
       "type": "object",
       "properties": {
@@ -510,6 +3234,282 @@
         "menuType",
         "children"
       ]
+    },
+    "OnlinePlayCountItem": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "时间"
+        },
+        "playCountTotal": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总统计"
+        },
+        "playKindList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OnlinePlayKindItem"
+          }
+        }
+      },
+      "title": "OnlinePlayCountItem",
+      "required": [
+        "createdAt",
+        "playCountTotal",
+        "playKindList"
+      ]
+    },
+    "OnlinePlayCountReq": {
+      "type": "object",
+      "properties": {
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束时间"
+        },
+        "playKind": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型"
+        }
+      },
+      "title": "OnlinePlayCountReq"
+    },
+    "OnlinePlayCountResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OnlinePlayCountItem"
+          }
+        }
+      },
+      "title": "OnlinePlayCountResp",
+      "required": [
+        "list"
+      ]
+    },
+    "OnlinePlayKindItem": {
+      "type": "object",
+      "properties": {
+        "playKind": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型"
+        },
+        "playName": {
+          "type": "string",
+          "description": "名称"
+        },
+        "playCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "统计"
+        }
+      },
+      "title": "OnlinePlayKindItem",
+      "required": [
+        "playKind",
+        "playName",
+        "playCount"
+      ]
+    },
+    "OutUserClubReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        }
+      },
+      "title": "OutUserClubReq",
+      "required": [
+        "uid",
+        "clubId"
+      ]
+    },
+    "OutUserClubResp": {
+      "type": "object",
+      "title": "OutUserClubResp"
+    },
+    "RebateConf": {
+      "type": "object",
+      "properties": {
+        "taxFee": {
+          "$ref": "#/definitions/ClubRebateConf",
+          "description": "税收（POT池）"
+        },
+        "potTips": {
+          "$ref": "#/definitions/ClubRebateConf",
+          "description": "佣金（POT池）"
+        },
+        "aheadTips": {
+          "$ref": "#/definitions/ClubRebateConf",
+          "description": "佣金（前注）"
+        }
+      },
+      "title": "RebateConf",
+      "required": [
+        "taxFee",
+        "potTips",
+        "aheadTips"
+      ]
+    },
+    "SendChatMsgReq": {
+      "type": "object",
+      "properties": {
+        "imAccount": {
+          "type": "string",
+          "description": "用户Im账号"
+        },
+        "appId": {
+          "type": "string",
+          "enum": [
+            "[101]"
+          ],
+          "description": "应用业务ID"
+        },
+        "toImAccount": {
+          "type": "string",
+          "description": "给某个人发送消息,目标用户ID,房间ID 和 目标用户ID 2个至少传1个"
+        },
+        "roomId": {
+          "type": "string",
+          "description": "给某个房间发送消息，房间ID 和 目标用户ID 2个至少传1个"
+        },
+        "messageType": {
+          "type": "string",
+          "enum": [
+            "[text]"
+          ],
+          "description": "类型，text=文本类型"
+        },
+        "message": {
+          "type": "string",
+          "description": "具体的消息类型"
+        }
+      },
+      "title": "SendChatMsgReq",
+      "required": [
+        "imAccount",
+        "appId",
+        "messageType",
+        "message"
+      ]
+    },
+    "SendChatMsgResp": {
+      "type": "object",
+      "title": "SendChatMsgResp"
+    },
+    "SetChatStatusReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "聊天状态，'1=禁止聊天，2=正常'"
+        }
+      },
+      "title": "SetChatStatusReq",
+      "required": [
+        "uid",
+        "status"
+      ]
+    },
+    "SetChatStatusResp": {
+      "type": "object",
+      "title": "SetChatStatusResp"
+    },
+    "SetHostStatusReq": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "房间状态 1:开启 2:关闭"
+        },
+        "playId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "玩法类型ID"
+        }
+      },
+      "title": "SetHostStatusReq",
+      "required": [
+        "status",
+        "playId"
+      ]
+    },
+    "SetHostStatusResp": {
+      "type": "object",
+      "title": "SetHostStatusResp"
+    },
+    "SetUserStatusReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "用户状态，'1=封禁,10=正常'"
+        }
+      },
+      "title": "SetUserStatusReq",
+      "required": [
+        "uid",
+        "status"
+      ]
+    },
+    "SetUserStatusResp": {
+      "type": "object",
+      "title": "SetUserStatusResp"
+    },
+    "StopUserPlayReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "StopUserPlayReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "StopUserPlayResp": {
+      "type": "object",
+      "title": "StopUserPlayResp"
     },
     "UpdateAdminUserReq": {
       "type": "object",
@@ -557,6 +3557,120 @@
     "UpdateAdminUserResp": {
       "type": "object",
       "title": "UpdateAdminUserResp"
+    },
+    "UpdateClubAgentReq": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "代理ID"
+        },
+        "clubId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "俱乐部ID"
+        },
+        "cooperationType": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "合作类型：1=普通不是的代理 2=联合 3=独代"
+        },
+        "rebateConf": {
+          "$ref": "#/definitions/RebateConf",
+          "description": "收益分配配置"
+        },
+        "remark": {
+          "type": "string",
+          "description": "俱乐部备注说明"
+        }
+      },
+      "title": "UpdateClubAgentReq",
+      "required": [
+        "ownerId",
+        "clubId"
+      ]
+    },
+    "UpdateClubAgentResp": {
+      "type": "object",
+      "title": "UpdateClubAgentResp"
+    },
+    "UserActiveCountItem": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "时间"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int64",
+          "description": "活跃总数 - 注册总数"
+        },
+        "activeCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "活跃总数"
+        },
+        "registerCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册总数"
+        }
+      },
+      "title": "UserActiveCountItem",
+      "required": [
+        "createdAt",
+        "count",
+        "activeCount",
+        "registerCount"
+      ]
+    },
+    "UserActiveCountReq": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            "[1"
+          ],
+          "description": "聚合类型，1=day，2=week，3=month"
+        },
+        "sTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始时间"
+        },
+        "eTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束时间"
+        }
+      },
+      "title": "UserActiveCountReq",
+      "required": [
+        "type"
+      ]
+    },
+    "UserActiveCountResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserActiveCountItem"
+          }
+        }
+      },
+      "title": "UserActiveCountResp",
+      "required": [
+        "list"
+      ]
     }
   },
   "securityDefinitions": {

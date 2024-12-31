@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func GetTrance(ctx context.Context) string {
+func GetTrace(ctx context.Context) string {
 	return trace.SpanContextFromContext(ctx).TraceID().String()
 }
 

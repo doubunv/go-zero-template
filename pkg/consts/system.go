@@ -8,7 +8,7 @@ const (
 )
 
 const (
-	Trance       = "trance"
+	Trace        = "trace"
 	ClientIp     = "client_ip"
 	UserAgent    = "user_agent"
 	Token        = "token"

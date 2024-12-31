@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"github.com/zeromicro/go-zero/core/logc"
-	"go-api/internal/dao/model/admin"
+	"go-api/internal/dao/model/mysql"
 	"go-api/internal/dao/schema"
 	"go-api/internal/svc"
 	"go-api/internal/types"
@@ -18,9 +18,8 @@ type AdminLoginLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
-	*admin.AdminInfoModel
-	*admin.AdminLoginTokenModel
-	*admin.AdminRoleModel
+	*mysql.AdminInfoModel
+	*mysql.AdminLoginTokenModel
 }
 
 func NewAdminLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AdminLoginLogic {
@@ -28,16 +27,14 @@ func NewAdminLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AdminL
 		Logger:               logx.WithContext(ctx),
 		ctx:                  ctx,
 		svcCtx:               svcCtx,
-		AdminInfoModel:       admin.NewAdminInfoModel(ctx, svcCtx),
-		AdminLoginTokenModel: admin.NewAdminLoginTokenModel(ctx, svcCtx),
-		AdminRoleModel:       admin.NewAdminRoleModel(ctx, svcCtx),
+		AdminInfoModel:       mysql.NewAdminInfoModel(ctx, svcCtx),
+		AdminLoginTokenModel: mysql.NewAdminLoginTokenModel(ctx, svcCtx),
 	}
 }
 
 func (l *AdminLoginLogic) AdminLogin(req *types.AdminUserLoginReq) (resp *types.AdminUserLoginResp, err error) {
 	resp = &types.AdminUserLoginResp{
-		Token:            "",
-		RoleMenuItemList: make([]*types.LoginRoleMenuItem, 0),
+		Token: "",
 	}
 	adminInfo := l.AdminInfoModel.FindByAccount(req.Account)
 	if adminInfo.ID == 0 {
@@ -69,12 +66,6 @@ func (l *AdminLoginLogic) AdminLogin(req *types.AdminUserLoginReq) (resp *types.
 	if err != nil {
 		logc.Error(l.ctx, "AdminLogin:", err)
 		return nil, errors.New("save login token error")
-	}
-
-	//获取角色对应的菜单tree
-	resp.RoleMenuItemList, err = l.AdminRoleModel.GetAdminRoleMenu(adminInfo.RoleId)
-	if err != nil {
-		return nil, err
 	}
 
 	resp.Token = token

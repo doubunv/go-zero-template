@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
+	"go-api/internal/jobCron"
 	"go-api/pkg/app"
 	"go-api/pkg/appMiddleware"
 	"go-api/pkg/logs/xcode"
@@ -32,6 +34,8 @@ func main() {
 		app.WithWhiteHeaderPathSMOption(middleware.WhiteHeaderPath()),
 		app.WithCheckTokenHandleSMOption(middleware.CheckTokenHandle(ctx)),
 	}
+
+	jobCron.NewJobCron(context.Background(), ctx).Run()
 
 	if c.IsDebug {
 		opt = append(opt, app.WithDebugOption())

@@ -54,7 +54,7 @@ func ContextHeadInLog(ctx context.Context, h *Head) context.Context {
 		logx.Field(consts.Version, h.Version),
 		logx.Field(consts.Source, h.Source),
 		logx.Field(consts.ClientIp, h.ClientIp),
-		logx.Field(consts.Trance, h.Trace),
+		logx.Field(consts.Trace, h.Trace),
 		logx.Field(consts.TokenUid, h.TokenUid),
 		logx.Field(consts.ReqPath, h.ReqPath),
 	)

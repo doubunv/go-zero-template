@@ -1,0 +1,4 @@
+
+1.   `uid` bigint NOT NULL DEFAULT '0' COMMENT '创建俱乐部的用户ID',
+     `rebate_conf` json DEFAULT NULL COMMENT '俱乐部返利配置',
+     `total_tax_fee` bigint DEFAULT '0' COMMENT '系统累计总收益',

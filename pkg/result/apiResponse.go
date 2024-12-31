@@ -15,7 +15,6 @@ import (
 
 func HttpSuccessResult(ctx context.Context, w http.ResponseWriter, resp interface{}) {
 	success := Success(resp, trace.TraceIDFromContext(ctx))
-
 	go func() {
 		logSucc, _ := json.Marshal(success)
 		logc.Info(ctx, "ApiResponse:", fmt.Sprintf("%s", string(logSucc)))
@@ -34,7 +33,7 @@ func HttpErrorResult(ctx context.Context, w http.ResponseWriter, err error) {
 		code = xerr.Code()
 		msg = xerr.Error()
 	} else {
-		code = http.StatusBadRequest
+		code = http.StatusInternalServerError
 		msg = err.Error()
 	}
 

@@ -33,26 +33,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/adminUser/createUser",
 				Handler: adminUser.CreateUserHandler(serverCtx),
 			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/adminUser/deleteUser",
-				Handler: adminUser.DeleteUserHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/adminUser/userList",
-				Handler: adminUser.UserListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/adminUser/updateUser",
-				Handler: adminUser.UpdateUserHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/adminUser/getOneUser",
-				Handler: adminUser.GetOneUserHandler(serverCtx),
-			},
 		},
 	)
 }

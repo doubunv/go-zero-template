@@ -3,8 +3,7 @@ package model
 import "github.com/spf13/cast"
 
 const (
-	DB      = "chgame"
-	DBAdmin = "chgame_admin"
+	DB = "admin-db"
 )
 
 type PageQuery struct {

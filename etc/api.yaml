@@ -2,13 +2,14 @@ Name: go-api
 Mode: dev
 Port: 8081
 IsDebug: true
+Timeout: 10000
+log:
+  level: info
 SelectDb:
-  - DBKey: chgame_admin
-    DataSource: root:harryPotter@911827@tcp(127.0.0.1:3306)/chgame_admin?parseTime=true
+  - DBKey: admin-db
+    DataSource: root:xxxxxx@tcp(127.0.0.01:3306)/admin-db?parseTime=true
 RedisConf:
   Addr: '127.0.0.1:6379'
   Username: ''
   Password: 'mac'
   DB: 0
-log:
-  level: info

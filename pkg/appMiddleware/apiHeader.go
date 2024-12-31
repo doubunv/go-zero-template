@@ -1,6 +1,7 @@
 package appMiddleware
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"github.com/zeromicro/go-zero/core/logc"
@@ -8,6 +9,7 @@ import (
 	"go-api/pkg/headInfo"
 	"go-api/pkg/result"
 	"google.golang.org/grpc/metadata"
+	"io"
 	"net/http"
 	"runtime/debug"
 	"strings"
@@ -85,6 +87,13 @@ func (m *ApiHeaderMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 		newCtx := headInfo.ContextHeadInLog(r.Context(), h)
 		newCtx = m.headInMetadata(newCtx, *h)
 		newReq := r.WithContext(newCtx)
+
+		body, err := io.ReadAll(newReq.Body)
+		if err != nil {
+			return
+		}
+		logc.Info(newCtx, "ApiRequest:"+string(body))
+		newReq.Body = io.NopCloser(bytes.NewBuffer(body))
 
 		next(w, newReq)
 	}

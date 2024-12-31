@@ -10,8 +10,7 @@ import (
 
 func WhiteHeaderPath() map[string]int {
 	return map[string]int{
-		"/swagger":             1,
-		"/adminUser/userLogin": 1,
+		"/swagger": 1,
 	}
 }
 

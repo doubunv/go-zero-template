@@ -1,4 +1,4 @@
-package admin
+package mysql
 
 import (
 	"context"
@@ -20,7 +20,7 @@ func NewAdminInfoModel(ctx context.Context, svcCtx *svc.ServiceContext) *AdminIn
 	return &AdminInfoModel{
 		ctx:    ctx,
 		svcCtx: svcCtx,
-		db:     svcCtx.DbSelect.GetDb(ctx, model.DBAdmin),
+		db:     svcCtx.DbSelect.GetDb(ctx, model.DB),
 	}
 }
 
@@ -54,7 +54,7 @@ func (model *AdminInfoModel) FindByAccount(account string) schema.AdminInfo {
 }
 
 func (model *AdminInfoModel) InsertSchema(data *schema.AdminInfo) error {
-	data.CreatedAt = time.Now()
+	data.CreatedAt = time.Now().Unix()
 	dbRes := model.getDb().Model(&schema.AdminInfo{}).Create(data)
 	if err := dbRes.Error; err != nil {
 		return err
@@ -98,4 +98,17 @@ func (model *AdminInfoModel) DeleteById(id int64) error {
 		return errors.New("id error")
 	}
 	return model.getDb().Model(&schema.AdminInfo{}).Where("id = ?", id).Updates(map[string]interface{}{"deleted_at": time.Now()}).Error
+}
+
+func (model *AdminInfoModel) FindByIds(ids []int64) map[int64]*schema.AdminInfo {
+	rows := make([]*schema.AdminInfo, 0)
+	if len(ids) == 0 {
+		return make(map[int64]*schema.AdminInfo)
+	}
+	model.getDb().Model(&schema.AdminInfo{}).Where("id in ?", ids).Find(&rows)
+	res := make(map[int64]*schema.AdminInfo)
+	for _, v := range rows {
+		res[v.ID] = v
+	}
+	return res
 }
