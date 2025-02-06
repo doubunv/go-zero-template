@@ -6,6 +6,7 @@ ENV GOPRIVATE="gitlab.xxx.com"
 
 RUN git config --add --global url."https://gitlab.xxx.com/".insteadof "http://gitlab.xxx.com/"
 
+#echo -e "machine gitlab.xxx.com\n  login root-runner\n  password hd5edhsxxx" > .netrc
 COPY .netrc /root/.netrc
 RUN chmod 600 /root/.netrc
 
